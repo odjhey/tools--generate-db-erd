@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  schemaspy:
+    image: schemaspy/schemaspy:latest
+    container_name: schemaspy
+    environment:
+      - SCHEMASPY_DBTYPE=${SCHEMASPY_DBTYPE:-pgsql11}
+      - SCHEMASPY_DBNAME=${SCHEMASPY_DBNAME}
+      - SCHEMASPY_HOST=${SCHEMASPY_HOST}
+      - SCHEMASPY_PORT=${SCHEMASPY_PORT}
+      - SCHEMASPY_USER=${SCHEMASPY_USER}
+      - SCHEMASPY_PASSWORD=${SCHEMASPY_PASSWORD}
+    volumes:
+      - ./schemaspy-output:/output
+      - ./schemaspy-drivers:/drivers
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: ["/entrypoint.sh"]

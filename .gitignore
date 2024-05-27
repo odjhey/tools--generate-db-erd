@@ -1,0 +1,5 @@
+schemaspy-drivers
+schemaspy-output
+.DS_Store
+.env
+.env*.local
